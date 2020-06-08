@@ -296,6 +296,10 @@ struct CaptureContextInvoker : ICaptureContext
   {
     return InvokeRetFunction<IStatisticsViewer *>(&ICaptureContext::GetStatisticsViewer);
   }
+  virtual IDAGViewer *GetDAGViewer() override
+  {
+    return InvokeRetFunction<IDAGViewer *>(&ICaptureContext::GetDAGViewer);
+  }
   virtual ITimelineBar *GetTimelineBar() override
   {
     return InvokeRetFunction<ITimelineBar *>(&ICaptureContext::GetTimelineBar);

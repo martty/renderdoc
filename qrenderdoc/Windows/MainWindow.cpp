@@ -3053,3 +3053,13 @@ bool MainWindow::isUnshareableDeviceInUse()
   uint32_t ident = RENDERDOC_EnumerateRemoteTargets(host.c_str(), 0);
   return ident != 0;
 }
+
+void MainWindow::on_action_DAG_Viewer_triggered()
+{
+    QWidget *stats = m_Ctx.GetDAGViewer()->Widget();
+
+    if(ui->toolWindowManager->toolWindows().contains(stats))
+      ToolWindowManager::raiseToolWindow(stats);
+    else
+      ui->toolWindowManager->addToolWindow(stats, mainToolArea());
+}

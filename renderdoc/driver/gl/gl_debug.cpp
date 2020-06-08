@@ -75,7 +75,7 @@ GLuint CreateShader(GLenum shaderType, const rdcstr &src)
   if(status == 0)
   {
     GL.glGetShaderInfoLog(ret, 1024, NULL, buffer);
-    RDCERR("%s compile error: %s", ToStr(shaderType).c_str(), buffer);
+    //RDCERR("%s compile error: %s", ToStr(shaderType).c_str(), buffer);
     return 0;
   }
 

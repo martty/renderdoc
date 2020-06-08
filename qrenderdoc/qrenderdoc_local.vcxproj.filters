@@ -741,6 +741,9 @@
     <ClCompile Include="$(IntDir)generated\moc_RDMenu.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="Windows\DAGViewer.cpp">
+      <Filter>Windows</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="3rdparty\flowlayout\FlowLayout.h">
@@ -1102,6 +1105,9 @@
     </ClInclude>
     <ClInclude Include="$(IntDir)generated\ui_ConfigEditor.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Windows\DAGViewer.h">
+      <Filter>Windows</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1504,6 +1510,9 @@
     </CustomBuild>
     <CustomBuild Include="Widgets\Extended\RDMenu.h">
       <Filter>Widgets\Extended</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Windows\DAGViewer.ui">
+      <Filter>Windows</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>

@@ -3926,7 +3926,7 @@ ReplayStatus D3D12_CreateReplayDevice(RDCFile *rdc, const ReplayOptions &opts, I
 
   if(FAILED(hr))
   {
-    RDCERR("Couldn't create a d3d12 device.");
+    //RDCERR("Couldn't create a d3d12 device.");
 
     SAFE_DELETE(rgp);
 

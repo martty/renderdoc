@@ -347,6 +347,22 @@ protected:
 
 DECLARE_REFLECTION_STRUCT(IResourceInspector);
 
+DOCUMENT("The DAG viewer window.");
+struct IDAGViewer
+{
+  DOCUMENT(
+      "Retrieves the QWidget for this :class:`DAGViewer` if PySide2 is available, or "
+      "otherwise "
+      "unique opaque pointer that can be passed to RenderDoc functions expecting a QWidget.");
+  virtual QWidget *Widget() = 0;
+
+protected:
+  IDAGViewer() = default;
+  ~IDAGViewer() = default;
+};
+
+DECLARE_REFLECTION_STRUCT(IDAGViewer);
+
 DOCUMENT("The executable capture window.");
 struct ICaptureDialog
 {
@@ -1683,6 +1699,13 @@ If no bookmark exists, this function will do nothing.
 :rtype: StatisticsViewer
 )");
   virtual IStatisticsViewer *GetStatisticsViewer() = 0;
+
+  DOCUMENT(R"(Retrieve the current singleton :class:`StatisticsViewer`.
+
+:return: The current window, which is created (but not shown) it there wasn't one open.
+:rtype: StatisticsViewer
+)");
+  virtual IDAGViewer *GetDAGViewer() = 0;
 
   DOCUMENT(R"(Retrieve the current singleton :class:`TimelineBar`.
 

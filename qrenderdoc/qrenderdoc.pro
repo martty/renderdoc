@@ -324,6 +324,7 @@ HEADERS += Code/CaptureContext.h \
     Windows/Dialogs/AnalyticsConfirmDialog.h \
     Windows/Dialogs/AnalyticsPromptDialog.h
 FORMS    += Windows/Dialogs/AboutDialog.ui \
+    Windows/DAGViewer.ui \
     Windows/Dialogs/CrashDialog.ui \
     Windows/Dialogs/UpdateDialog.ui \
     Windows/MainWindow.ui \

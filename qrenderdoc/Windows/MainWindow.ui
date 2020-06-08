@@ -42,7 +42,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>18</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_Tools">
@@ -165,6 +165,7 @@
     <addaction name="action_Resource_Inspector"/>
     <addaction name="action_Comments"/>
     <addaction name="action_Diagnostic_Log"/>
+    <addaction name="action_DAG_Viewer"/>
     <addaction name="separator"/>
     <addaction name="extension_dummy_Window"/>
    </widget>
@@ -513,6 +514,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+O</string>
+   </property>
+  </action>
+  <action name="action_DAG_Viewer">
+   <property name="text">
+    <string>DAG Viewer</string>
    </property>
   </action>
  </widget>

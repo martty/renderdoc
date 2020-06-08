@@ -30,12 +30,12 @@
     <ProjectGuid>{A14A6AE5-02B1-35FE-BE59-B3E7C273B40B}</ProjectGuid>
     <RootNamespace>qrenderdoc</RootNamespace>
     <Keyword>Qt4VSv1.0</Keyword>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>qrenderdoc</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup>
-    <PlatformToolSet>v140</PlatformToolSet>
+    <PlatformToolSet>v142</PlatformToolSet>
     <OutputDirectory>$(SolutionDir)$(Platform)\$(Configuration)\</OutputDirectory>
     <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
     <CharacterSet>NotSet</CharacterSet>
@@ -598,6 +598,7 @@
     <ClCompile Include="$(IntDir)generated\moc_AnalyticsConfirmDialog.cpp" />
     <ClCompile Include="$(IntDir)generated\moc_AnalyticsPromptDialog.cpp" />
     <ClCompile Include="$(IntDir)generated\moc_APIInspector.cpp" />
+	<ClCompile Include="$(IntDir)generated\moc_DAGViewer.cpp" />
     <ClCompile Include="$(IntDir)generated\moc_ResourceInspector.cpp" />
     <ClCompile Include="$(IntDir)generated\moc_BufferFormatSpecifier.cpp" />
     <ClCompile Include="$(IntDir)generated\moc_FindReplace.cpp" />
@@ -720,6 +721,7 @@
     <ClCompile Include="Styles\RDTweakedNativeStyle\RDTweakedNativeStyle.cpp" />
     <ClCompile Include="Widgets\CustomPaintWidget.cpp" />
     <ClCompile Include="Windows\APIInspector.cpp" />
+    <ClCompile Include="Windows\DAGViewer.cpp" />
     <ClCompile Include="Windows\ResourceInspector.cpp" />
     <ClCompile Include="Windows\BufferViewer.cpp" />
     <ClCompile Include="Windows\ConstantBufferPreviewer.cpp" />
@@ -818,6 +820,12 @@
     <ClInclude Include="3rdparty\scintilla\lexlib\SubStyles.h" />
     <ClInclude Include="3rdparty\scintilla\lexlib\WordList.h" />
     <ClInclude Include="3rdparty\scintilla\qt\ScintillaEditBase\PlatQt.h" />
+	<CustomBuild Include="Windows\DAGViewer.h">
+      <AdditionalInputs>%(Fullpath);$(ProjectDir)3rdparty\qt\$(Platform)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command>"$(ProjectDir)3rdparty\qt\$(Platform)\bin\moc.exe" -DUNICODE -DWIN32 -DWIN64 -D_WIN32 -D_WIN64 -DRENDERDOC_PLATFORM_WIN32 -DSCINTILLA_QT=1 -DSCI_LEXER=1 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -D_MSC_VER=1900 -I"$(ProjectDir)." -I"$(SolutionDir)\renderdoc\api\replay" -I"$(ProjectDir)3rdparty\qt\$(Platform)\mkspecs/win32-msvc2015" -I"$(ProjectDir)3rdparty\qt\include" -I"$(ProjectDir)3rdparty\qt\include\QtWidgets" -I"$(ProjectDir)3rdparty\qt\include\QtGui" -I"$(ProjectDir)3rdparty\qt\include\QtCore" "%(Fullpath)" -o "$(IntDir)generated\moc_%(Filename).cpp"</Command>
+      <Message>MOC %(Filename).h</Message>
+      <Outputs>$(IntDir)generated\moc_%(Filename).cpp</Outputs>
+    </CustomBuild>
     <CustomBuild Include="Windows\Dialogs\PerformanceCounterSelection.h">
       <AdditionalInputs>%(Fullpath);$(ProjectDir)3rdparty\qt\$(Platform)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
       <Command>"$(ProjectDir)3rdparty\qt\$(Platform)\bin\moc.exe" -DUNICODE -DWIN32 -DWIN64 -D_WIN32 -D_WIN64 -DRENDERDOC_PLATFORM_WIN32 -DSCINTILLA_QT=1 -DSCI_LEXER=1 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -D_MSC_VER=1900 -I"$(ProjectDir)." -I"$(SolutionDir)\renderdoc\api\replay" -I"$(ProjectDir)3rdparty\qt\$(Platform)\mkspecs/win32-msvc2015" -I"$(ProjectDir)3rdparty\qt\include" -I"$(ProjectDir)3rdparty\qt\include\QtWidgets" -I"$(ProjectDir)3rdparty\qt\include\QtGui" -I"$(ProjectDir)3rdparty\qt\include\QtCore" "%(Fullpath)" -o "$(IntDir)generated\moc_%(Filename).cpp"</Command>
@@ -1546,6 +1554,12 @@
       <Outputs>$(IntDir)generated\ui_%(Filename).h</Outputs>
     </CustomBuild>
     <CustomBuild Include="Windows\Dialogs\TextureSaveDialog.ui">
+      <AdditionalInputs>%(Fullpath);$(ProjectDir)3rdparty\qt\$(Platform)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command>"$(ProjectDir)3rdparty\qt\$(Platform)\bin\uic.exe" "%(Fullpath)" -o "$(IntDir)generated\ui_%(Filename).h"</Command>
+      <Message>UIC %(Filename).ui</Message>
+      <Outputs>$(IntDir)generated\ui_%(Filename).h</Outputs>
+    </CustomBuild>
+	<CustomBuild Include="Windows\DAGViewer.ui">
       <AdditionalInputs>%(Fullpath);$(ProjectDir)3rdparty\qt\$(Platform)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
       <Command>"$(ProjectDir)3rdparty\qt\$(Platform)\bin\uic.exe" "%(Fullpath)" -o "$(IntDir)generated\ui_%(Filename).h"</Command>
       <Message>UIC %(Filename).ui</Message>

@@ -49,6 +49,7 @@ class LogView;
 class CommentView;
 class PerformanceCounterViewer;
 class StatisticsViewer;
+class DAGViewer;
 class TimelineBar;
 class PythonShell;
 class ResourceInspector;
@@ -203,6 +204,7 @@ public:
   ICommentView *GetCommentView() override;
   IPerformanceCounterViewer *GetPerformanceCounterViewer() override;
   IStatisticsViewer *GetStatisticsViewer() override;
+  IDAGViewer *GetDAGViewer() override;
   ITimelineBar *GetTimelineBar() override;
   IPythonShell *GetPythonShell() override;
   IResourceInspector *GetResourceInspector() override;
@@ -218,6 +220,7 @@ public:
   bool HasCommentView() override { return m_CommentView != NULL; }
   bool HasPerformanceCounterViewer() override { return m_PerformanceCounterViewer != NULL; }
   bool HasStatisticsViewer() override { return m_StatisticsViewer != NULL; }
+  bool HasDAGViewer() { return m_DAGViewer != NULL; }
   bool HasTimelineBar() override { return m_TimelineBar != NULL; }
   bool HasPythonShell() override { return m_PythonShell != NULL; }
   bool HasResourceInspector() override { return m_ResourceInspector != NULL; }
@@ -399,6 +402,7 @@ private:
   CommentView *m_CommentView = NULL;
   PerformanceCounterViewer *m_PerformanceCounterViewer = NULL;
   StatisticsViewer *m_StatisticsViewer = NULL;
+  DAGViewer *m_DAGViewer = NULL;
   TimelineBar *m_TimelineBar = NULL;
   PythonShell *m_PythonShell = NULL;
   ResourceInspector *m_ResourceInspector = NULL;

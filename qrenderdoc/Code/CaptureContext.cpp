@@ -57,6 +57,7 @@
 #include "Windows/StatisticsViewer.h"
 #include "Windows/TextureViewer.h"
 #include "Windows/TimelineBar.h"
+#include "Windows/DAGViewer.h"
 #include "QRDUtils.h"
 #include "RGPInterop.h"
 #include "version.h"
@@ -2077,6 +2078,18 @@ IStatisticsViewer *CaptureContext::GetStatisticsViewer()
   return m_StatisticsViewer;
 }
 
+IDAGViewer *CaptureContext::GetDAGViewer()
+{
+  if(m_DAGViewer)
+    return m_DAGViewer;
+
+  m_DAGViewer = new DAGViewer(*this, m_MainWindow);
+  m_DAGViewer->setObjectName(lit("DAGViewer"));
+  setupDockWindow(m_DAGViewer);
+
+  return m_DAGViewer;
+}
+
 ITimelineBar *CaptureContext::GetTimelineBar()
 {
   if(m_TimelineBar)
@@ -2334,6 +2347,8 @@ void CaptureContext::BuiltinWindowClosed(QWidget *window)
     m_ResourceInspector = NULL;
   else if(m_PerformanceCounterViewer && m_PerformanceCounterViewer->Widget() == window)
     m_PerformanceCounterViewer = NULL;
+  else if(m_DAGViewer && m_DAGViewer->Widget() == window)
+    m_DAGViewer = NULL;
   else
     qCritical() << "Unrecognised window being closed: " << window;
 }
